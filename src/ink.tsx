@@ -23,6 +23,7 @@ export interface Options {
 	debug: boolean;
 	exitOnCtrlC: boolean;
 	patchConsole: boolean;
+	clearConsole: boolean;
 	waitUntilExit?: () => Promise<void>;
 }
 
@@ -151,7 +152,7 @@ export default class Ink {
 
 		if (outputHeight >= this.options.stdout.rows) {
 			this.options.stdout.write(
-				ansiEscapes.clearTerminal + this.fullStaticOutput + output
+				(this.options.clearConsole ? ansiEscapes.clearTerminal : "") + this.fullStaticOutput + output
 			);
 			this.lastOutput = output;
 			return;

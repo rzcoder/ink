@@ -77,6 +77,7 @@ const render: RenderFunction = (node, options): Instance => {
 		stdin: process.stdin,
 		stderr: process.stderr,
 		debug: false,
+		clearConsole: true,
 		exitOnCtrlC: true,
 		patchConsole: true,
 		...getOptions(options)
